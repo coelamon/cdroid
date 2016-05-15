@@ -1,5 +1,5 @@
-# cdroid
-arduino project:<br/>
+# cdroid - arduino project
+
 4wd robot with wifi access point for remote control
 
 electronics:<br/>
