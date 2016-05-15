@@ -1,0 +1,38 @@
+packet signature
+
+"CDRD" - 4 bytes
+
+packet structure:
+
+0(4): packet signature
+4(2): message id
+6(2): message data length
+8(?): message data
+
+minimum packet length: 8 bytes
+
+message ids:
+
+1 - log in (from client)
+2 - auth ok (from cdroid)
+3 - auth fail (from cdroid)
+4 - cdroid input
+5 - client disconnecting
+6 - cdroid disconnecting
+7 - capture shot (from client)
+8 - shot begin (from cdroid)
+9 - shot piece (from cdroid)
+10 - shot end (from cdroid)
+
+cdroid input message data:
+
+0(1): forward
+1(1): backward
+2(1): left
+3(1): right
+4(1): speed
+
+shot piece message data:
+0(2): x
+2(2): y
+4(?): pixels
