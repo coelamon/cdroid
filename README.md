@@ -2,10 +2,10 @@
 arduino project:<br/>
 4wd robot with wifi access point for remote control
 
-electronics:
-Arduino Mega 2560
-ESP-01
-Motor shield L293D
-4 x dc motors
-AMS1117-3.3
+electronics:<br/>
+Arduino Mega 2560<br/>
+ESP-01<br/>
+Motor shield L293D<br/>
+4 x dc motors<br/>
+AMS1117-3.3<br/>
 bidirectional level shifter
