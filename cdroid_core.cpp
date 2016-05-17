@@ -107,6 +107,7 @@ void cdroidProcessInput(CDroidInput *input)
 
 void cdroidBeginCapture()
 {
+  // TODO: capture camera shot and send
 }
 
 void cdroidLoop()
