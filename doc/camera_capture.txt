@@ -1,0 +1,5 @@
+capture format
+columns: 80
+rows: 120
+bits per pixel: 4
+summary: 4800 bytes

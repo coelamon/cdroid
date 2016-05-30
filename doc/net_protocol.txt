@@ -35,4 +35,5 @@ cdroid input message data:
 shot piece message data:
 0(2): x
 2(2): y
-4(?): pixels
+4(2): number of pixels
+6(?): pixels

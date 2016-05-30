@@ -222,6 +222,7 @@ void netProcessMessage(Esp8266Udp *espUdp, IPAddress *remoteIp, unsigned int rem
 	}
     else if (msgid == NETMSG_CAPTURE_SHOT)
 	{
+      cameraCaptureImage();
 	  return;
 	}
     else
@@ -234,6 +235,52 @@ void netProcessMessage(Esp8266Udp *espUdp, IPAddress *remoteIp, unsigned int rem
       }
     }
   }
+}
+
+void netShotBegin()
+{
+  if (!clientConnected)
+  {
+    return;
+  }
+  netSendMessage(netEspUdp, &clientIp, clientPort, NETMSG_SHOT_BEGIN, 0, 0);
+}
+
+void netShotEnd()
+{
+  if (!clientConnected)
+  {
+    return;
+  }
+  netSendMessage(netEspUdp, &clientIp, clientPort, NETMSG_SHOT_END, 0, 0);
+}
+
+void netShotPiece(int x, int y, int pixelnum, int datalen, char *data)
+{
+  if (!clientConnected)
+  {
+    return;
+  }
+  if (datalen > 120)
+  {
+    return;
+  }
+  if (data == 0)
+  {
+    return;
+  }
+  char buf[128];
+  buf[0] = x & 0xFF;
+  buf[1] = (x >> 8) & 0xFF;
+  buf[2] = y & 0xFF;
+  buf[3] = (y >> 8) & 0xFF;
+  buf[4] = pixelnum & 0xFF;
+  buf[5] = (pixelnum >> 8) & 0xFF;
+  for (int i = 0; i < datalen; i++)
+  {
+    buf[6+i] = data[i];
+  }
+  netSendMessage(netEspUdp, &clientIp, clientPort, NETMSG_SHOT_PIECE, 6+datalen, buf);
 }
 
 void netLoop()

@@ -3,6 +3,7 @@
 #include <AFMotor.h>
 #include "esp8266udp.h"
 #include "net.h"
+#include "camera.h"
 #include "cdroid_core.h"
 
 // (Arduino_RX, Arduino_TX)
@@ -84,6 +85,8 @@ void setup()
   }
   
   Serial.println("Setup done");
+  
+  cameraInit(&Serial);
   
   cdroidInit(255);
   /*
